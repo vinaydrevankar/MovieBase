@@ -8,7 +8,7 @@ type ActionProps = PropsWithChildren<{
 }>;
 
 
-const moviesDetails = (state = [], action:ActionProps) =>{
+const moviesDetails = (state = null, action:ActionProps) =>{
     switch (action.type) {
         case REDUX_CONSTANTS.MOVIE_DETAILS:
             return action.data;

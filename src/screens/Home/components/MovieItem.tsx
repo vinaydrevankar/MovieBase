@@ -13,7 +13,7 @@ const MovieItem = (props:any) =>{
         return <View style={styles.mainContainer}/>
     }
 
-    return <TouchableOpacity style={styles.mainContainer} onPress={props?.onPress}>
+    return <TouchableOpacity style={styles.mainContainer} onPress={()=>props?.onPress(props?.item)}>
             <Image style={styles.image} source={{uri:props?.item["#IMG_POSTER"]}}/>
             <Text style={styles.title} ellipsizeMode="tail">{props?.item["#TITLE"]}</Text>
     </TouchableOpacity>
@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
     mainContainer: {
         flex:1,
         // height: 200,
-        // backgroundColor: "yellow",
         alignItems:'center',
         justifyContent:'center',
         margin:15,
@@ -41,6 +40,7 @@ const styles = StyleSheet.create({
         fontWeight:'600',
         marginTop: 5,
         textAlign:'center',
+        color:'white'
         // backgroundColor:'red'
     }
 })

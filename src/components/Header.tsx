@@ -17,7 +17,7 @@ const Header = (props: HeaderProps) => {
     return <View style={styles.mainContainer}>
         {props?.isBackButtonDisplayed ? 
         <TouchableOpacity style={styles.imageContainer} onPress={props?.navigation.goBack}>
-            <Image style={styles.image} source={require('../assets/backIcon.png')}/>
+            <Image tintColor={"white"} style={styles.image} source={require('../assets/backIcon.png')}/>
         </TouchableOpacity> : null}
         <Text style={styles.title}>{props?.title}</Text>
     </View>
@@ -25,7 +25,7 @@ const Header = (props: HeaderProps) => {
 
 const styles = StyleSheet.create({
     mainContainer: {
-        backgroundColor: "white",
+        backgroundColor: "#24272b",
         height: 54,
         justifyContent: 'center'
     },
@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
         marginHorizontal: 50,
         textAlign: 'center',
         fontSize: 18,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color:'white'
     },
     imageContainer: {
         position:'absolute',

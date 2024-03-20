@@ -18,7 +18,7 @@ const SearchBar = (props:any) =>{
 const styles = StyleSheet.create({
     mainContainer: {
         height: 60,
-        backgroundColor: "white",
+        backgroundColor: "#24272b",
         alignItems:'center',
         justifyContent:'center',
         borderTopWidth: 0.3,

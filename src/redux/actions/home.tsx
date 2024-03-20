@@ -9,7 +9,9 @@ export const serviceGetMoviesList = () => (dispatch:AppDispatch) => Promise.reso
     try {
         dispatch({ type: REDUX_CONSTANTS.SERVICE_GET_MOVIE_LIST_LOADING });
         const response:any = await getDataFromService({ url: HOME_API_URL })
-        dispatch({ type: REDUX_CONSTANTS.MOVIE_LIST, data: response?.data?.description });
+        if(response?.status == 200){
+            dispatch({ type: REDUX_CONSTANTS.MOVIE_LIST, data: response?.data?.description });
+        }
         dispatch({ type: REDUX_CONSTANTS.SERVICE_GET_MOVIE_LIST_SUCCESS });
         return response;
     } catch (e) {

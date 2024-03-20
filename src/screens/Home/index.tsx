@@ -16,6 +16,7 @@ import MovieItem from './components/MovieItem';
 import { useNavigation } from '@react-navigation/native';
 import Loader from '../../components/Loader';
 import Header from '../../components/Header';
+import { setMovieDetails } from '../../redux/actions/details';
 
 const Home = () => {
     const dispatch = useDispatch<any>();
@@ -35,11 +36,8 @@ const Home = () => {
     }
 
     const onChangeText = (text: String) => {
-        console.log('onChangeText: ' + text);
         const filteredList = moviesList.filter((item: any) => {
-            console.log('item');
-
-            if (item["#TITLE"]?.toLocaleLowerCase().includes(text.toLocaleLowerCase())) {
+            if (item["#TITLE"]?.toLowerCase().includes(text.toLowerCase())) {
                 return true
             } else {
                 return false
@@ -91,7 +89,7 @@ const Home = () => {
 const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
-        backgroundColor: "lightgrey",
+        backgroundColor: "#464a4f",
     }
 })
 
