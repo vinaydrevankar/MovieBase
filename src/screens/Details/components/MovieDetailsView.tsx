@@ -29,7 +29,7 @@ const MovieDetailsView = (props: any) => {
             <Text style={styles.bLabel}>Actors</Text>
             <Text style={styles.bTxt}>{
                 moviesDetails?.short?.actor?.map((item, index) => {
-                    return <Text>{item?.name}{(moviesDetails?.short?.actor?.length == index + 1) ? "" : ", "}</Text>
+                    return <Text key={index}>{item?.name}{(moviesDetails?.short?.actor?.length == index + 1) ? "" : ", "}</Text>
                 })
             }</Text>
             

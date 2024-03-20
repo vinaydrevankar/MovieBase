@@ -22,10 +22,12 @@ const Genres = (props:any) => {
 
 const styles = StyleSheet.create({
     mainContainer: {
-        flexDirection:'row',
-        justifyContent:'space-around',
+        flexWrap:'wrap',
+        flexDirection:'row'
     },
     genre:{
+        marginHorizontal:2,
+        marginTop:5,
         borderWidth:1,
         borderColor:"lightgrey",
         borderRadius: 14,

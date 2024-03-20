@@ -5,8 +5,7 @@ import NetInfo from '@react-native-community/netinfo';
 export const getInternetConnectionStatus = async () => {
     try {
       const networkState = await NetInfo.fetch()
-      console.log('networkState:'+JSON.stringify(networkState));
-      
+      // console.log('networkState:'+JSON.stringify(networkState));
       if (networkState.isConnected) {
         return true;
       }

@@ -70,7 +70,7 @@ const Home = () => {
         }
     }, [moviesList])
 
-    console.log('moviesList: ' + JSON.stringify(moviesList, null, 2));
+    // console.log('moviesList: ' + JSON.stringify(moviesList, null, 2));
 
 
     return <View style={styles.mainContainer}>

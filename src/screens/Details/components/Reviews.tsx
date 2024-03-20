@@ -13,7 +13,7 @@ const Reviews = (props:any) => {
             <Text style={[styles.reviewsLabel]}><Text style={styles.reviewsLabelUnderline}>Reviews</Text> ({props?.data?.featuredReviews?.edges?.length})</Text>
             {
                 props?.data?.featuredReviews?.edges?.map((item, index)=>{
-                    console.log('itemitem: '+JSON.stringify(item, null, 2));
+                    // console.log('itemitem: '+JSON.stringify(item, null, 2));
                     
                     return <View key={index} style={styles.reviewContainer}>
                             <Text style={styles.author}>{item?.node?.author?.nickName}</Text>
