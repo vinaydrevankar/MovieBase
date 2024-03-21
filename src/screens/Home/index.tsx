@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     View,
     StyleSheet,
@@ -25,10 +25,11 @@ const Home = () => {
     const isLoadingMoviesList = useSelector(state => state?.home?.isLoadingMoviesList)
 
     const [displayedMovies, setDisplayedMovies] = useState([])
+    const [searchText, setSearchText] = useState(null)
+    const searchRequestTimeout = useRef()
 
-
-    const getMoviesList = () => {
-        dispatch(serviceGetMoviesList()).then(async (response: any) => {
+    const getMoviesList = (searchText:String) => {
+        dispatch(serviceGetMoviesList(searchText)).then(async (response: any) => {
             if (response?.status != 200) {
                 errorHandler(SERVICE.HOME, response);
             }
@@ -36,14 +37,7 @@ const Home = () => {
     }
 
     const onChangeText = (text: String) => {
-        const filteredList = moviesList.filter((item: any) => {
-            if (item["#TITLE"]?.toLowerCase().includes(text.toLowerCase())) {
-                return true
-            } else {
-                return false
-            }
-        })
-        setDisplayedMovies(filteredList)
+        setSearchText(text)
     }
 
     const formatData = (data: any, numColumns: number) => {
@@ -70,7 +64,21 @@ const Home = () => {
         }
     }, [moviesList])
 
-    // console.log('moviesList: ' + JSON.stringify(moviesList, null, 2));
+
+    useEffect(() => {
+
+        setDisplayedMovies([])
+        /**Clear request if next request comes before 500 mill second */
+        if (searchRequestTimeout && searchRequestTimeout.current) {
+            clearTimeout(searchRequestTimeout.current)
+        }
+
+        if ((searchText && searchText?.length > 2) || !searchText) {
+            searchRequestTimeout.current = setTimeout(() => {
+                getMoviesList(searchText)
+            }, 500);
+        }
+    }, [searchText])
 
 
     return <View style={styles.mainContainer}>
